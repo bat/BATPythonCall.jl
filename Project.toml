@@ -1,0 +1,8 @@
+name = "BATPythonCall"
+uuid = "dc6699a0-bee0-4ed4-84d6-ad34e0e2513f"
+version = "0.1.0"
+
+[deps]
+
+[compat]
+julia = "1.6"
