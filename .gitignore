@@ -4,4 +4,3 @@
 *.jl.mem
 .ipynb_checkpoints
 .vscode
-Manifest.toml

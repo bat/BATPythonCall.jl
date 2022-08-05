@@ -59,13 +59,12 @@ jobs:
             ${{ runner.os }}-test-${{ env.cache-name }}-
             ${{ runner.os }}-test-
             ${{ runner.os }}-
+      - name: update_manifest
+        run: julia --project=. -E 'import Pkg; Pkg.update()'
       - uses: julia-actions/julia-buildpkg@latest
-      - uses: julia-actions/julia-runtest@latest
         env:
           PYTHON: 'Conda'
       - uses: julia-actions/julia-runtest@latest
-        env:
-          PYTHON: 'Conda'
         with:
           coverage: ${{ matrix.version == '1' && matrix.os == 'ubuntu-latest' && matrix.arch == 'x64' }}
       - uses: julia-actions/julia-processcoverage@v1
@@ -93,11 +92,14 @@ jobs:
             ${{ runner.os }}-test-${{ env.cache-name }}-
             ${{ runner.os }}-test-
             ${{ runner.os }}-
+      - name: update_manifest
+        run: julia --project=. -E 'import Pkg; Pkg.update()'
       - uses: julia-actions/julia-buildpkg@latest
+        env:
+          PYTHON: 'Conda'
       - uses: julia-actions/julia-docdeploy@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Needed due to https://github.com/JuliaDocs/Documenter.jl/issues/1177
           DOCUMENTER_KEY: ${{ secrets.DOCUMENTER_KEY }}
           GKSwstype: 'nul'
-          PYTHON: 'Conda'
