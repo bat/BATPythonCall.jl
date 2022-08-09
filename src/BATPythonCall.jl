@@ -9,7 +9,7 @@ module BATPythonCall
 
 #using DensityInterface
 #using ChainRulesCore
-#using PythonCall
+using PythonCall
 #using BAT
 
 #include("pycall_density.jl")
